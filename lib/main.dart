@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pcm_bmi/presentation/languages.dart';
 import 'package:pcm_bmi/presentation/screens/onboarding/onboarding_screen.dart';
 import 'package:pcm_bmi/presentation/theme/app_colors.dart';
 
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
       ),
       home: OnboardingScreen(),
       debugShowCheckedModeBanner: false,
+      translations: Languages(),
+      fallbackLocale: const Locale('en', 'US'),
+      locale: Get.deviceLocale,
     );
   }
 }

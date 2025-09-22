@@ -20,13 +20,28 @@ class BmiScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
-                  Text(
-                    'PCM BMI',
-                    style: TextStyle(
-                      color: AppColors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                    ),
+                  Stack(
+                    alignment: AlignmentGeometry.center,
+                    children: [
+                      Align(
+                        child: Text(
+                          'PCM BMI',
+                          style: TextStyle(
+                            color: AppColors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: IconButton(
+                          onPressed: controller.changeLanguage,
+                          icon: Icon(Icons.language),
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 32),
                   Flex(
@@ -34,7 +49,7 @@ class BmiScreen extends StatelessWidget {
                     children: [
                       Flexible(
                         child: InfoCard(
-                          name: 'Age',
+                          name: 'Age'.tr,
                           value: controller.age.string,
                           onDecrease: controller.decreaseAge,
                           onIncrease: controller.increaseAge,
@@ -43,7 +58,7 @@ class BmiScreen extends StatelessWidget {
                       SizedBox(width: 20),
                       Flexible(
                         child: InfoCard(
-                          name: 'Weight (KG)',
+                          name: 'Weight (KG)'.tr,
                           value: controller.weight.string,
                           onDecrease: controller.decreaseWeight,
                           onIncrease: controller.increaseWeight,
@@ -55,7 +70,7 @@ class BmiScreen extends StatelessWidget {
                   buildCardContainer(
                     children: [
                       Text(
-                        'Height (CM)',
+                        'Height (CM)'.tr,
                         style: TextStyle(
                           color: AppColors.black,
                           fontSize: 16,
@@ -74,8 +89,8 @@ class BmiScreen extends StatelessWidget {
                         value: controller.height.value,
                         min: controller.minHeight,
                         max: controller.maxHeight,
-                        divisions:
-                            (controller.maxHeight - controller.minHeight).toInt(),
+                        divisions: (controller.maxHeight - controller.minHeight)
+                            .toInt(),
                         onChanged: controller.setHeight,
                       )
                     ],
@@ -84,7 +99,7 @@ class BmiScreen extends StatelessWidget {
                   buildCardContainer(
                     children: [
                       Text(
-                        'Gender',
+                        'Gender'.tr,
                         style: TextStyle(
                           color: AppColors.black,
                           fontSize: 16,
@@ -97,7 +112,7 @@ class BmiScreen extends StatelessWidget {
                         spacing: 12,
                         children: [
                           Text(
-                            'Male',
+                            'Male'.tr,
                             style: TextStyle(fontSize: 16),
                           ),
                           Switch(
@@ -105,7 +120,7 @@ class BmiScreen extends StatelessWidget {
                             onChanged: controller.setIsFemale,
                           ),
                           Text(
-                            'Female',
+                            'Female'.tr,
                             style: TextStyle(fontSize: 16),
                           ),
                         ],
@@ -118,7 +133,7 @@ class BmiScreen extends StatelessWidget {
                     child: FilledButton(
                       onPressed: () {
                         final bmiResult = controller.calculateBmi();
-          
+
                         Get.dialog(
                           Dialog(
                             backgroundColor: AppColors.white,
@@ -130,7 +145,7 @@ class BmiScreen extends StatelessWidget {
                                   child: Column(
                                     children: [
                                       Text(
-                                        'BMI Results',
+                                        'BMI Results'.tr,
                                         style: TextStyle(
                                             color: AppColors.black,
                                             fontSize: 28,
@@ -145,7 +160,7 @@ class BmiScreen extends StatelessWidget {
                                         ),
                                       ),
                                       Text(
-                                        bmiResult.result.toString(),
+                                        bmiResult.getResult(),
                                         style: TextStyle(
                                           color: AppColors.black,
                                           fontSize: 20,
@@ -184,7 +199,7 @@ class BmiScreen extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(12),
                         child: Text(
-                          'Calculate BMI',
+                          'Calculate BMI'.tr,
                           style: TextStyle(fontWeight: FontWeight.w700),
                         ),
                       ),
