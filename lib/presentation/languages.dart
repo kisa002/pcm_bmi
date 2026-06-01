@@ -19,6 +19,13 @@ class Languages extends Translations {
           'Level 1 Obesity': '1단계 비만',
           'Level 2 Obesity': '2단계 비만',
           'Level 3 Obesity': '3단계 비만(고도비만)',
+          'Success': '성공',
+          'BMI record saved successfully': 'BMI 기록이 저장되었습니다.',
+          'Save': '저장',
+          'Close': '닫기',
+          'History': '히스토리',
+          'No history yet': '아직 기록이 없습니다.',
+          'BMI Trend': 'BMI 추이',
         },
         'en_US': {
           'greeting': 'Hello',
@@ -36,6 +43,13 @@ class Languages extends Translations {
           'Level 1 Obesity': 'Level 1 Obesity',
           'Level 2 Obesity': 'Level 2 Obesity',
           'Level 3 Obesity (High Obesity)': 'Level 3 Obesity (High Obesity)',
+          'Success': 'Success',
+          'BMI record saved successfully': 'BMI record saved successfully',
+          'Save': 'Save',
+          'Close': 'Close',
+          'History': 'History',
+          'No history yet': 'No history yet',
+          'BMI Trend': 'BMI Trend',
         },
       };
 }

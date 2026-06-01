@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pcm_bmi/presentation/components/info_card.dart';
 import 'package:pcm_bmi/presentation/screens/bmi/bmi_controller.dart';
+import 'package:pcm_bmi/presentation/screens/history/history_screen.dart';
 import 'package:pcm_bmi/presentation/theme/app_colors.dart';
 
 class BmiScreen extends StatelessWidget {
@@ -24,6 +25,13 @@ class BmiScreen extends StatelessWidget {
                     alignment: AlignmentGeometry.center,
                     children: [
                       Align(
+                        alignment: Alignment.centerLeft,
+                        child: IconButton(
+                          onPressed: () => Get.to(() => const HistoryScreen()),
+                          icon: const Icon(Icons.history),
+                        ),
+                      ),
+                      Align(
                         child: Text(
                           'PCM BMI',
                           style: TextStyle(
@@ -38,12 +46,12 @@ class BmiScreen extends StatelessWidget {
                         alignment: Alignment.centerRight,
                         child: IconButton(
                           onPressed: controller.changeLanguage,
-                          icon: Icon(Icons.language),
+                          icon: const Icon(Icons.language),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 32),
+                  const SizedBox(height: 32),
                   Flex(
                     direction: Axis.horizontal,
                     children: [
@@ -55,7 +63,7 @@ class BmiScreen extends StatelessWidget {
                           onIncrease: controller.increaseAge,
                         ),
                       ),
-                      SizedBox(width: 20),
+                      const SizedBox(width: 20),
                       Flexible(
                         child: InfoCard(
                           name: 'Weight (KG)'.tr,
@@ -66,7 +74,7 @@ class BmiScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   buildCardContainer(
                     children: [
                       Text(
@@ -95,7 +103,7 @@ class BmiScreen extends StatelessWidget {
                       )
                     ],
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   buildCardContainer(
                     children: [
                       Text(
@@ -106,14 +114,14 @@ class BmiScreen extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(height: 12),
+                      const SizedBox(height: 12),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         spacing: 12,
                         children: [
                           Text(
                             'Male'.tr,
-                            style: TextStyle(fontSize: 16),
+                            style: const TextStyle(fontSize: 16),
                           ),
                           Switch(
                             value: controller.isFemale.value,
@@ -121,13 +129,13 @@ class BmiScreen extends StatelessWidget {
                           ),
                           Text(
                             'Female'.tr,
-                            style: TextStyle(fontSize: 16),
+                            style: const TextStyle(fontSize: 16),
                           ),
                         ],
                       )
                     ],
                   ),
-                  SizedBox(height: 40),
+                  const SizedBox(height: 40),
                   SizedBox(
                     width: double.infinity,
                     child: FilledButton(
@@ -167,22 +175,47 @@ class BmiScreen extends StatelessWidget {
                                           fontWeight: FontWeight.w600,
                                         ),
                                       ),
-                                      SizedBox(height: 12),
-                                      SizedBox(
-                                        width: double.infinity,
-                                        child: FilledButton(
-                                          onPressed: () => Get.back(),
-                                          style: FilledButton.styleFrom(
-                                            backgroundColor: AppColors.primary,
-                                            foregroundColor: AppColors.white,
-                                          ),
-                                          child: Text(
-                                            'Close',
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w700,
+                                      const SizedBox(height: 24),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: OutlinedButton(
+                                              onPressed: () => Get.back(),
+                                              style: OutlinedButton.styleFrom(
+                                                side: BorderSide(
+                                                    color: AppColors.primary),
+                                                foregroundColor:
+                                                    AppColors.primary,
+                                              ),
+                                              child: Text(
+                                                'Close'.tr,
+                                                style: const TextStyle(
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                              ),
                                             ),
                                           ),
-                                        ),
+                                          const SizedBox(width: 12),
+                                          Expanded(
+                                            child: FilledButton(
+                                              onPressed: () {
+                                                controller.saveRecord();
+                                                Get.back();
+                                              },
+                                              style: FilledButton.styleFrom(
+                                                backgroundColor:
+                                                    AppColors.primary,
+                                                foregroundColor: AppColors.white,
+                                              ),
+                                              child: Text(
+                                                'Save'.tr,
+                                                style: const TextStyle(
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       )
                                     ],
                                   ),
@@ -200,7 +233,7 @@ class BmiScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(12),
                         child: Text(
                           'Calculate BMI'.tr,
-                          style: TextStyle(fontWeight: FontWeight.w700),
+                          style: const TextStyle(fontWeight: FontWeight.w700),
                         ),
                       ),
                     ),

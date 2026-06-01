@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pcm_bmi/data/database_service.dart';
 import 'package:pcm_bmi/presentation/languages.dart';
 import 'package:pcm_bmi/presentation/screens/onboarding/onboarding_screen.dart';
 import 'package:pcm_bmi/presentation/theme/app_colors.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  final dbService = DatabaseService();
+  await dbService.init();
+  Get.put(dbService);
+
   runApp(const MyApp());
 }
 
